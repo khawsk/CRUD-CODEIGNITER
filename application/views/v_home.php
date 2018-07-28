@@ -1,28 +1,29 @@
-<?=
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="<?= base_url('assets/signin.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/signin.css') ?>" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lista de pacients - medCad</title>
-  <?= link_tag('assets/bootstrap/css/bootstrap.min.css') ?>
-  <?= link_tag('assets/bootstrap/css/bootstrap-theme.min.css') ?>
+  <?php echo link_tag('assets/bootstrap/css/bootstrap.min.css') ?>
+  <?php echo link_tag('assets/bootstrap/css/bootstrap-theme.min.css') ?>
 </head>
 <body>
   <div class="container">
     <h1 class="text-center">Bem vindo ao medCad!</h1>
     <div class="col-md-12">
       <div class="row">
-        <?= anchor('cadastro/create', 'Novo Cadastro', array('class' => 'btn btn-success')); ?>
+        <?php echo anchor('cadastro/create', 'Novo Cadastro', array('class' => 'btn btn-success')); ?>
       </div>
       <div class="row">
-      <h3><?= $cadastros -> num_rows(); ?> registros(s)</h3>
+      <h3><?php echo $cadastros -> num_rows(); ?> registros(s)</h3>
       </div>
       <div class="row">
-      <? if ($cadastros->num_rows() > 0): ?>
+      <?php if ($cadastros->num_rows() > 0): ?>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -33,20 +34,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tr>
           </thead>
           <tbody>
-            <? foreach($cadastros -> result() as $cadastro): ?>
+            <?php foreach($cadastros -> result() as $cadastro): ?>
             <tr>
-              <td><?= $cadastro->id ?></td>
-              <td><?= $cadastro->nome ?></td>
-              <td><?= $cadastro->nome_hospital ?></td>
-              <td><?= anchor("cadastro/edit/$cadastro->id", "Editar") ?>
-                 | <?= anchor("cadastro/delete/$cadastro->id", "Excluir") ?>
+              <td><?php echo $cadastro->id ?></td>
+              <td><?php echo $cadastro->nome ?></td>
+              <td><?php echo $cadastro->nome_hospital ?></td>
+              <td><?php echo anchor("cadastro/edit/$cadastro->id", "Editar") ?>
+                 | <?php echo anchor("cadastro/delete/$cadastro->id", "Excluir") ?>
             </tr>
-            <? endforeach; ?>
+            <?php endforeach; ?>
           </tbody>
         </table>
-        <? else: ?>
+        <?php else: ?>
           <h4>Nenhum registro cadastrado.</h4>
-        <? endif; ?>
+        <?php endif; ?>
       </div>
     </div>  
   </div>
@@ -67,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<p><a href="<?= base_url('index.php/login/logout') ?>">Deslogar</a></p>
+<p><a href="<?php echo base_url('index.php/login/logout') ?>">Deslogar</a></p>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     
@@ -77,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <script>
   
-    var base_url = "<?= base_url(); ?>";
+    var base_url = "<?php base_url(); ?>";
   
     $(function(){
       $('.confirma_exclusao').on('click', function(e) {
